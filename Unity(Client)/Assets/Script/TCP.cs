@@ -22,9 +22,7 @@ public class TCP : MonoBehaviour
     public float shoe_scale = 350f;
 
     int R_deg = 0;
-    int R_deg_old = 0;
     int L_deg = 0;
-    int L_deg_old = 0;
     int R_leg_len = 0;
     int L_leg_len = 0;
 
@@ -132,11 +130,10 @@ public class TCP : MonoBehaviour
                 R_deg = int.Parse(arr[50]);
                 L_deg = int.Parse(arr[51]);
                 R_leg_len = int.Parse(arr[52]);
-                L_leg_len = int.Parse(arr[52]);
+                L_leg_len = int.Parse(arr[53]);
+                change_shoe.index = int.Parse(arr[54]);
                 if (R_deg != 999)
                 {
-                    /*R_yRotation = R_deg - R_deg_old;
-                    R_deg_old = R_deg;*/
 
                     R_yRotation = R_deg;
 
@@ -150,8 +147,6 @@ public class TCP : MonoBehaviour
                 }
                 if (L_deg != 999)
                 {
-                    /*L_yRotation = L_deg - L_deg_old;
-                    L_deg_old = L_deg;*/
 
                     L_yRotation = L_deg;
 

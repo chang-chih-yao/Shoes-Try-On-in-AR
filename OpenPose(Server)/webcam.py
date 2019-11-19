@@ -264,10 +264,14 @@ try:
                     R_leg_len = str(int(math.sqrt((R_hip_x - R_knee_x)**2 + (R_hip_y - R_knee_y)**2) + math.sqrt((R_knee_x - R_ankel_x)**2 + (R_knee_y - R_ankel_y)**2)))
                     L_leg_len = str(int(math.sqrt((L_hip_x - L_knee_x)**2 + (L_hip_y - L_knee_y)**2) + math.sqrt((L_knee_x - L_ankel_x)**2 + (L_knee_y - L_ankel_y)**2)))
 
-                    keypoint_str_byte = bytes(keypoint_str, 'ascii') + b',' + bytes(R_deg, 'ascii') + b',' + bytes(L_deg, 'ascii') + b',' + bytes(R_leg_len, 'ascii') + b',' + bytes(L_leg_len, 'ascii')
+                    with open('shoe_index.txt', 'r') as f:
+                        temp = f.readline()
+                    #print(temp)
+                    keypoint_str_byte = bytes(keypoint_str, 'ascii') + b',' + bytes(R_deg, 'ascii') + b',' + bytes(L_deg, 'ascii') + b',' + bytes(R_leg_len, 'ascii') + b',' + bytes(L_leg_len, 'ascii') + b',' + bytes(temp.replace('\n', ''), 'ascii')
+                    #keypoint_str_byte = bytes(keypoint_str, 'ascii') + b',' + bytes(R_deg, 'ascii') + b',' + bytes(L_deg, 'ascii') + b',' + bytes(R_leg_len, 'ascii') + b',' + bytes(L_leg_len, 'ascii')
                     client.send(keypoint_str_byte)
                 else:
-                    client.send(b'0' + b',0'*49 + b',999,999,100')        # total : 25個(x,y)，所以一共50個座標值
+                    client.send(b'0' + b',0'*49 + b',999,999,100,100,0')        # total : 25個(x,y)，所以一共50個座標值
             except ConnectionResetError:
                 print('socket close')
                 client.close()
