@@ -1,2 +1,2 @@
 # Unity(Client)
-Explore new custom sneakers experience, complete with AR.
+Click Button to change shoes model.
