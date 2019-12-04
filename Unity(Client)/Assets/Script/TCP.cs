@@ -19,6 +19,12 @@ public class TCP : MonoBehaviour
     public GameObject L_shoe;
     public GameObject R_shoe_1;
     public GameObject L_shoe_1;
+    public GameObject R_shoe_2;
+    public GameObject L_shoe_2;
+    public GameObject R_shoe_3;
+    public GameObject L_shoe_3;
+    public GameObject R_shoe_4;
+    public GameObject L_shoe_4;
     public float shoe_scale = 350f;
 
     int R_deg = 0;
@@ -134,7 +140,6 @@ public class TCP : MonoBehaviour
                 change_shoe.index = int.Parse(arr[54]);
                 if (R_deg != 999)
                 {
-
                     R_yRotation = R_deg;
 
 
@@ -147,7 +152,6 @@ public class TCP : MonoBehaviour
                 }
                 if (L_deg != 999)
                 {
-
                     L_yRotation = L_deg;
 
                     int L_ankel_x = int.Parse(arr[28]);
@@ -213,11 +217,13 @@ public class TCP : MonoBehaviour
                 {
                     R_shoe.SetActive(true);
                     R_shoe_1.SetActive(false);
+                    R_shoe_2.SetActive(false);
+                    R_shoe_3.SetActive(false);
+                    R_shoe_4.SetActive(false);
 
                     //R_shoe.transform.eulerAngles = new Vector3(-10f, R_yRotation, 0f);
                     R_shoe.transform.eulerAngles = new Vector3(-20f, 0f, 0f);
                     R_shoe.transform.Rotate(new Vector3(0, R_yRotation, 0), Space.Self);
-
                     R_shoe.GetComponent<Transform>().localPosition = new Vector3(R_center_x - 270f, -(R_center_y - 270f), 190f);
                     R_shoe.transform.localScale = new Vector3(R_leg_len / shoe_scale, R_leg_len / shoe_scale, R_leg_len / shoe_scale);
                 }
@@ -225,13 +231,53 @@ public class TCP : MonoBehaviour
                 {
                     R_shoe.SetActive(false);
                     R_shoe_1.SetActive(true);
+                    R_shoe_2.SetActive(false);
+                    R_shoe_3.SetActive(false);
+                    R_shoe_4.SetActive(false);
 
-                    //R_shoe.transform.eulerAngles = new Vector3(-10f, R_yRotation, 0f);
                     R_shoe_1.transform.eulerAngles = new Vector3(-20f, 0f, 0f);
                     R_shoe_1.transform.Rotate(new Vector3(0, R_yRotation, 0), Space.Self);
-
-                    R_shoe_1.GetComponent<Transform>().localPosition = new Vector3(R_center_x - 270f, -(R_center_y - 270f), 180f);
+                    R_shoe_1.GetComponent<Transform>().localPosition = new Vector3(R_center_x - 270f, -(R_center_y - 270f), 185f);
                     R_shoe_1.transform.localScale = new Vector3(R_leg_len / shoe_scale, R_leg_len / shoe_scale, R_leg_len / shoe_scale);
+                }
+                else if (change_shoe.index == 2)
+                {
+                    R_shoe.SetActive(false);
+                    R_shoe_1.SetActive(false);
+                    R_shoe_2.SetActive(true);
+                    R_shoe_3.SetActive(false);
+                    R_shoe_4.SetActive(false);
+
+                    R_shoe_2.transform.eulerAngles = new Vector3(-20f, 0f, 0f);
+                    R_shoe_2.transform.Rotate(new Vector3(0, R_yRotation, 0), Space.Self);
+                    R_shoe_2.GetComponent<Transform>().localPosition = new Vector3(R_center_x - 270f, -(R_center_y - 270f), 195f);
+                    R_shoe_2.transform.localScale = new Vector3(R_leg_len / shoe_scale, R_leg_len / shoe_scale, R_leg_len / shoe_scale);
+                }
+                else if (change_shoe.index == 3)
+                {
+                    R_shoe.SetActive(false);
+                    R_shoe_1.SetActive(false);
+                    R_shoe_2.SetActive(false);
+                    R_shoe_3.SetActive(true);
+                    R_shoe_4.SetActive(false);
+
+                    R_shoe_3.transform.eulerAngles = new Vector3(-20f, 0f, 0f);
+                    R_shoe_3.transform.Rotate(new Vector3(0, R_yRotation, 0), Space.Self);
+                    R_shoe_3.GetComponent<Transform>().localPosition = new Vector3(R_center_x - 270f, -(R_center_y - 270f), 190f);
+                    R_shoe_3.transform.localScale = new Vector3(R_leg_len / shoe_scale, R_leg_len / shoe_scale, R_leg_len / shoe_scale);
+                }
+                else if (change_shoe.index == 4)
+                {
+                    R_shoe.SetActive(false);
+                    R_shoe_1.SetActive(false);
+                    R_shoe_2.SetActive(false);
+                    R_shoe_3.SetActive(false);
+                    R_shoe_4.SetActive(true);
+
+                    R_shoe_4.transform.eulerAngles = new Vector3(-20f, 0f, 0f);
+                    R_shoe_4.transform.Rotate(new Vector3(0, R_yRotation, 0), Space.Self);
+                    R_shoe_4.GetComponent<Transform>().localPosition = new Vector3(R_center_x - 270f, -(R_center_y - 270f), 190f);
+                    R_shoe_4.transform.localScale = new Vector3(R_leg_len / shoe_scale, R_leg_len / shoe_scale, R_leg_len / shoe_scale);
                 }
             }
             if (L_deg != 999)
@@ -241,11 +287,13 @@ public class TCP : MonoBehaviour
                 {
                     L_shoe.SetActive(true);
                     L_shoe_1.SetActive(false);
+                    L_shoe_2.SetActive(false);
+                    L_shoe_3.SetActive(false);
+                    L_shoe_4.SetActive(false);
 
                     //L_shoe.transform.eulerAngles = new Vector3(-10f, L_yRotation, 0f);
                     L_shoe.transform.eulerAngles = new Vector3(-20f, 0f, 0f);
                     L_shoe.transform.Rotate(new Vector3(0, L_yRotation, 0), Space.Self);
-
                     L_shoe.GetComponent<Transform>().localPosition = new Vector3(L_center_x - 270f, -(L_center_y - 270f), 190f);
                     L_shoe.transform.localScale = new Vector3(L_leg_len / shoe_scale, L_leg_len / shoe_scale, L_leg_len / shoe_scale);
                 }
@@ -253,16 +301,53 @@ public class TCP : MonoBehaviour
                 {
                     L_shoe.SetActive(false);
                     L_shoe_1.SetActive(true);
+                    L_shoe_2.SetActive(false);
+                    L_shoe_3.SetActive(false);
+                    L_shoe_4.SetActive(false);
 
-                    
-                    
-                    //L_shoe_1.transform.eulerAngles = new Vector3(-10f, L_yRotation, 0f);
                     L_shoe_1.transform.eulerAngles = new Vector3(-20f, 0f, 0f);
                     L_shoe_1.transform.Rotate(new Vector3(0, L_yRotation, 0), Space.Self);
-
-                    L_shoe_1.GetComponent<Transform>().localPosition = new Vector3(L_center_x - 270f, -(L_center_y - 270f), 140f);
-
+                    L_shoe_1.GetComponent<Transform>().localPosition = new Vector3(L_center_x - 270f, -(L_center_y - 270f), 190f);
                     L_shoe_1.transform.localScale = new Vector3(L_leg_len / shoe_scale, L_leg_len / shoe_scale, L_leg_len / shoe_scale);
+                }
+                else if (change_shoe.index == 2)
+                {
+                    L_shoe.SetActive(false);
+                    L_shoe_1.SetActive(false);
+                    L_shoe_2.SetActive(true);
+                    L_shoe_3.SetActive(false);
+                    L_shoe_4.SetActive(false);
+
+                    L_shoe_2.transform.eulerAngles = new Vector3(-20f, 0f, 0f);
+                    L_shoe_2.transform.Rotate(new Vector3(0, L_yRotation, 0), Space.Self);
+                    L_shoe_2.GetComponent<Transform>().localPosition = new Vector3(L_center_x - 270f, -(L_center_y - 270f), 195f);
+                    L_shoe_2.transform.localScale = new Vector3(L_leg_len / shoe_scale, L_leg_len / shoe_scale, L_leg_len / shoe_scale);
+                }
+                else if (change_shoe.index == 3)
+                {
+                    L_shoe.SetActive(false);
+                    L_shoe_1.SetActive(false);
+                    L_shoe_2.SetActive(false);
+                    L_shoe_3.SetActive(true);
+                    L_shoe_4.SetActive(false);
+
+                    L_shoe_3.transform.eulerAngles = new Vector3(-20f, 0f, 0f);
+                    L_shoe_3.transform.Rotate(new Vector3(0, L_yRotation, 0), Space.Self);
+                    L_shoe_3.GetComponent<Transform>().localPosition = new Vector3(L_center_x - 270f, -(L_center_y - 270f), 190f);
+                    L_shoe_3.transform.localScale = new Vector3(L_leg_len / shoe_scale, L_leg_len / shoe_scale, L_leg_len / shoe_scale);
+                }
+                else if (change_shoe.index == 4)
+                {
+                    L_shoe.SetActive(false);
+                    L_shoe_1.SetActive(false);
+                    L_shoe_2.SetActive(false);
+                    L_shoe_3.SetActive(false);
+                    L_shoe_4.SetActive(true);
+
+                    L_shoe_4.transform.eulerAngles = new Vector3(-20f, 0f, 0f);
+                    L_shoe_4.transform.Rotate(new Vector3(0, L_yRotation, 0), Space.Self);
+                    L_shoe_4.GetComponent<Transform>().localPosition = new Vector3(L_center_x - 270f, -(L_center_y - 270f), 190f);
+                    L_shoe_4.transform.localScale = new Vector3(L_leg_len / shoe_scale, L_leg_len / shoe_scale, L_leg_len / shoe_scale);
                 }
             }
         }

@@ -105,12 +105,14 @@ try:
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, 960)
         cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 540)
         ret, frame = cap.read()
+
         print(frame.shape)
         if ret == False:
             print('Cannot find camera!')
             break
         elif frame.shape[0] != 540 or frame.shape[1] != 960:
             print('Wrong frame width or height! (need 960 for width and 540 for height)')
+            print(frame.shape[0])
             break
 
         ################################### Socket #######################################

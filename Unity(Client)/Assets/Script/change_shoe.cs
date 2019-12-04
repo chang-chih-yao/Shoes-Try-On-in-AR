@@ -8,6 +8,6 @@ public class change_shoe : MonoBehaviour
 
     public void click_change_shoe()
     {
-        index = (index + 1) % 2;
+        index = (index + 1) % 5;
     }
 }
