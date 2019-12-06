@@ -273,7 +273,7 @@ try:
                     #keypoint_str_byte = bytes(keypoint_str, 'ascii') + b',' + bytes(R_deg, 'ascii') + b',' + bytes(L_deg, 'ascii') + b',' + bytes(R_leg_len, 'ascii') + b',' + bytes(L_leg_len, 'ascii')
                     client.send(keypoint_str_byte)
                 else:
-                    client.send(b'0' + b',0'*49 + b',999,999,100,100,0')        # total : 25個(x,y)，所以一共50個座標值
+                    client.send(b'0' + b',0'*49 + b',999,999,100,100,-1')        # total : 25個(x,y)，所以一共50個座標值
             except ConnectionResetError:
                 print('socket close')
                 client.close()
