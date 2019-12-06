@@ -25,6 +25,10 @@ public class TCP : MonoBehaviour
     public GameObject L_shoe_3;
     public GameObject R_shoe_4;
     public GameObject L_shoe_4;
+
+    public GameObject Zoom;
+    private float[] shoe_arr = new float[] { -195f, -93f, 7.5f, 108f, 206f };
+
     public float shoe_scale = 350f;
 
     int R_deg = 0;
@@ -52,7 +56,7 @@ public class TCP : MonoBehaviour
     float L_yRotation = 5.0f;
     float L_center_x = 0f;
     float L_center_y = 0f;
-    
+
     Thread connectThread; //连接线程
 
     //初始化
@@ -137,7 +141,20 @@ public class TCP : MonoBehaviour
                 L_deg = int.Parse(arr[51]);
                 R_leg_len = int.Parse(arr[52]);
                 L_leg_len = int.Parse(arr[53]);
-                change_shoe.index = int.Parse(arr[54]);
+                
+                if (int.Parse(arr[54]) != -1)
+                {
+                    if (change_shoe.index != int.Parse(arr[54]))
+                    {
+                        change_shoe.animation_flag = true;
+                        //print("Change");
+                    }
+
+                    change_shoe.index = int.Parse(arr[54]);
+                }
+                
+
+
                 if (R_deg != 999)
                 {
                     R_yRotation = R_deg;
@@ -190,6 +207,9 @@ public class TCP : MonoBehaviour
 
         L_yRotation = 0f;
         //L_shoe.transform.eulerAngles = new Vector3(-110f, 0f, L_yRotation);
+
+        //Zoom.GetComponent<Transform>().localPosition = new Vector3(shoe_arr[change_shoe.index], 132f, 5f);
+
     }
 
     /*void OnGUI()
@@ -204,6 +224,15 @@ public class TCP : MonoBehaviour
     {
         //Recv.text = recvStr;
         Recv.text = R_leg_len.ToString();
+
+        if (change_shoe.animation_flag)
+        {
+            //Zoom.GetComponent<Transform>().localPosition = new Vector3(shoe_arr[index], 132f, 5f);
+            Zoom.GetComponent<Transform>().localPosition = Vector3.Lerp(Zoom.GetComponent<Transform>().localPosition, new Vector3(shoe_arr[change_shoe.index], 132f, 5f), 0.25f);
+
+            if (Mathf.Abs(shoe_arr[change_shoe.index] - Zoom.GetComponent<Transform>().localPosition.x) < 1f)
+                change_shoe.animation_flag = false;
+        }
 
         if (flag == 1)
         {
@@ -351,7 +380,6 @@ public class TCP : MonoBehaviour
                 }
             }
         }
-        
     }
 
     //程序退出则关闭连接
